@@ -1,0 +1,32 @@
+[package]
+name = "mini"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+#lto = true
+#codegen-units = 1
+
+[profile.test]
+opt-level = 3
+
+[profile.small]
+inherits = "release"
+opt-level = "z"
+debug = false
+strip = true
+debug-assertions = false
+overflow-checks = false
+lto = true
+panic = "abort"
+
+
+[dependencies]
+image = "0.24.7"
+bitvec = "1"
+rayon = "1.8.0"
+clap = { version = "=4.4.7", features = ["derive"] }
+brotlic = "0.8.1"
+
+[dev-dependencies]
+itertools = "0.12.0"
